@@ -142,7 +142,8 @@
             <p>2yr webdev</p>
             <p>quite silly</p>
             <p>13 yr old</p>
-            <p><a onclick="hideshow('main', 'links');">links</a> • <a onclick="hideshow('main', 'specs');">pc specs</a> • <a onclick="hideshow('main', 'about');">about</a>
+            <p><a onclick="hideshow('main', 'links');">links</a> • <a onclick="hideshow('main', 'specs');">pc specs</a>
+                • <a onclick="hideshow('main', 'about');">about</a>
             <p><a onclick="nogpu(true);" id="gpu">pause effects</a></p>
             </p>
         </div>
@@ -161,21 +162,47 @@
             <p><span class="bold" style="animation: aa 2s infinite;">CPU: </span>i9-13900H</p>
             <p><span class="bold" style="animation: aa 2s infinite;">RAM: </span>32GB DDR5 4800MHz</p>
             <p><span class="bold" style="animation: aa 2s infinite;">SSD: </span>1tb SKHynix</p>
-            <p style="font-size: 14px;">(thanks grandpa, for surprising me with this when I asked for a decent laptop)</p>
+            <p style="font-size: 14px;">(thanks grandpa, for surprising me with this when I asked for a decent laptop)
+            </p>
             <p><a class="bold" onclick="hideshow('specs', 'main');">back</a></p>
         </div>
         <div id="about" class="hidden">
             <p class="bold" style="animation: aa 2s infinite;">about me</p>
             <p>I like technology (a lot) and am passionate about web development/UI design.</p>
             <p>I also like biking, swimming, fucking around, and finding new places.</p>
-            <img style="width: 240px; height: auto; border-radius: 8px; animation: bb 2s infinite;" src="./assets/me.jpg" alt="Pic of me cuz why not"></img>
-            <p>Cool background effect: <a href="https://github.com/paveldogreat/webgl-fluid-simulation" target="_blank">GitHub</a></p>
+            <img style="width: 240px; height: auto; border-radius: 8px; cursor: pointer; animation: bb 2s infinite;"
+                src="./assets/me.jpg" id="lol" alt="Pic of me cuz why not"></img>
+            <p>Cool background effect: <a href="https://github.com/paveldogreat/webgl-fluid-simulation"
+                    target="_blank">GitHub</a></p>
             <p>Contact: <a href="mailto:randomuser691337@gmail.com" target="_blank">email</a></p>
             <p><a class="bold" onclick="hideshow('about', 'main');">back</a></p>
         </div>
     </div>
     <script src="./assets/jq.js"></script>
     <script>
+        // add a shock factor
+        let clickCount = 0;
+        document.getElementById('lol').addEventListener('click', function () {
+            clickCount++;
+            const bangEmoji = document.createElement('span');
+            bangEmoji.innerHTML = '💥';
+            bangEmoji.style.position = 'absolute';
+            bangEmoji.style.left = `${event.pageX}px`;
+            bangEmoji.style.top = `${event.pageY}px`;
+            bangEmoji.zIndex = "3";
+            document.body.appendChild(bangEmoji);
+            setTimeout(() => {
+                bangEmoji.remove();
+            }, 500);
+
+            if (clickCount === 3) {
+                document.getElementById('lol').src = './assets/oops.jpg';
+                setTimeout(() => {
+                    document.getElementById('lol').src = './assets/me.jpg';
+                    clickCount = 0; // Reset click count
+                }, 1200);
+            }
+        });
         function hideshow(elementId, elementId2) {
             var element = $("#" + elementId);
             var element2 = $("#" + elementId2);
