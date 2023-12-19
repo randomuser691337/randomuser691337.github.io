@@ -51,12 +51,11 @@
             transform: translate(-50%, -50%);
             padding: 12px;
             border-radius: 12px;
-            border: 2px solid rgba(120, 120, 120, 0.7);
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
+            border: 3px solid rgba(70, 70, 70, 0.7);
+            background-color: #1a1a1a;
             text-align: center;
-            background-color: rgba(80, 80, 80, 0.7);
             max-width: 80%;
+            max-width: 300px;
             max-height: 80%;
             overflow: auto;
             z-index: 2;
@@ -80,16 +79,34 @@
                 color: #7777ff;
             }
 
-            25% {
+            33% {
                 color: #ff7777;
             }
 
-            75% {
+            66% {
                 color: #77ff77
             }
 
             100% {
                 color: #7777ff;
+            }
+        }
+
+        @keyframes bb {
+            0% {
+                border: 2px solid #7777ff;
+            }
+
+            33% {
+                border: 2px solid #ff7777;
+            }
+
+            66% {
+                border: 2px solid #77ff77
+            }
+
+            100% {
+                border: 2px solid #7777ff;
             }
         }
 
@@ -101,7 +118,7 @@
         }
 
         a:hover {
-            font-size: 18px;
+            font-size: 17.5px;
             user-select: none;
         }
 
@@ -125,7 +142,7 @@
             <p>2yr webdev</p>
             <p>quite silly</p>
             <p>13 yr old</p>
-            <p><a onclick="hideshow('main', 'links');">links</a> • <a onclick="hideshow('main', 'specs');">pc specs</a>
+            <p><a onclick="hideshow('main', 'links');">links</a> • <a onclick="hideshow('main', 'specs');">pc specs</a> • <a onclick="hideshow('main', 'about');">about</a>
             <p><a onclick="nogpu(true);" id="gpu">pause effects</a></p>
             </p>
         </div>
@@ -139,12 +156,22 @@
         <div id="specs" class="hidden">
             <p class="bold" style="animation: aa 2s infinite;">luh calm specs</p>
             <p><span class="bold" style="animation: aa 2s infinite;">Display: </span>4k OLED (touchscreen)</p>
-            <p><span class="bold" style="animation: aa 2s infinite;">Model: </span>Dell XP 15 9530 (tysm grandpa)</p>
+            <p><span class="bold" style="animation: aa 2s infinite;">Model: </span>Dell XP 15 9530</p>
             <p><span class="bold" style="animation: aa 2s infinite;">GPU: </span>RTX 4070 Laptop</p>
             <p><span class="bold" style="animation: aa 2s infinite;">CPU: </span>i9-13900H</p>
             <p><span class="bold" style="animation: aa 2s infinite;">RAM: </span>32GB DDR5 4800MHz</p>
             <p><span class="bold" style="animation: aa 2s infinite;">SSD: </span>1tb SKHynix</p>
+            <p style="font-size: 14px;">(thanks grandpa, for surprising me with this when I asked for a decent laptop)</p>
             <p><a class="bold" onclick="hideshow('specs', 'main');">back</a></p>
+        </div>
+        <div id="about" class="hidden">
+            <p class="bold" style="animation: aa 2s infinite;">about me</p>
+            <p>I like technology (a lot) and am passionate about web development/UI design.</p>
+            <p>I also like biking, swimming, fucking around, and finding new places.</p>
+            <img style="width: 240px; height: auto; border-radius: 8px; animation: bb 2s infinite;" src="./assets/me.jpg" alt="Pic of me cuz why not"></img>
+            <p>Cool background effect: <a href="https://github.com/paveldogreat/webgl-fluid-simulation" target="_blank">GitHub</a></p>
+            <p>Contact: <a href="mailto:randomuser691337@gmail.com" target="_blank">email</a></p>
+            <p><a class="bold" onclick="hideshow('about', 'main');">back</a></p>
         </div>
     </div>
     <script src="./assets/jq.js"></script>
