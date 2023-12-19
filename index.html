@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <style>
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./assets/Poppins-Regular.ttf');
+        }
+
+        @font-face {
+            font-family: 'PoppinsBold';
+            src: url('./assets/Poppins-Bold.ttf');
+        }
+
+        @font-face {
+            font-family: 'PoppinsMed';
+            src: url('./assets/Poppins-Medium.ttf');
+        }
+
+        html,
+        body {
+            background-color: #000;
+        }
+
+        body {
+            margin: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-size: 100% 100%;
+            font-family: 'Poppins', Arial;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        embed {
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            border: none;
+        }
+
+        .card {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 12px;
+            border-radius: 12px;
+            border: 2px solid rgba(120, 120, 120, 0.7);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            background-color: rgba(80, 80, 80, 0.7);
+            max-width: 80%;
+            max-height: 80%;
+            overflow: auto;
+            z-index: 2;
+        }
+
+        .med {
+            font-family: 'PoppinsMed', Arial;
+        }
+
+        .bold {
+            font-family: 'PoppinsBold', Arial;
+        }
+
+        p {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        @keyframes aa {
+            0% {
+                color: #7777ff;
+            }
+
+            25% {
+                color: #ff7777;
+            }
+
+            75% {
+                color: #77ff77
+            }
+
+            100% {
+                color: #7777ff;
+            }
+        }
+
+        a {
+            animation: aa 2s infinite;
+            transition: 0.08s;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        a:hover {
+            font-size: 18px;
+            user-select: none;
+        }
+
+        a:active {
+            font-size: 15px;
+            user-select: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <embed src="./frame.html" id="fxframe"></embed>
+    <div class="card">
+        <div id="main">
+            <p class="bold" style="animation: aa 2s infinite;">randomuser691337</p>
+            <p>tech enthusiast</p>
+            <p>2yr webdev</p>
+            <p>quite silly</p>
+            <p>13 yr old</p>
+            <p><a onclick="hideshow('main', 'links');">links</a> • <a onclick="hideshow('main', 'specs');">pc specs</a>
+            <p><a onclick="nogpu(true);" id="gpu">pause effects</a></p>
+            </p>
+        </div>
+        <div id="links" class="hidden">
+            <p class="bold" style="animation: aa 2s infinite;">luh calm links</p>
+            <p><a href="https://discordapp.com/users/1128850735958851585" target="_blank">discord</a></p>
+            <p><a href="https://github.com/randomuser691337" target="_blank">github</a></p>
+            <p><a href="https://www.tiktok.com/@randomuser691337" target="_blank">tiktok</a></p>
+            <p><a class="bold" onclick="hideshow('links', 'main');">back</a></p>
+        </div>
+        <div id="specs" class="hidden">
+            <p class="bold" style="animation: aa 2s infinite;">luh calm specs</p>
+            <p><span class="bold" style="animation: aa 2s infinite;">Display: </span>4k OLED (touchscreen)</p>
+            <p><span class="bold" style="animation: aa 2s infinite;">Model: </span>Dell XP 15 9530 (tysm grandpa)</p>
+            <p><span class="bold" style="animation: aa 2s infinite;">GPU: </span>RTX 4070 Laptop</p>
+            <p><span class="bold" style="animation: aa 2s infinite;">CPU: </span>i9-13900H</p>
+            <p><span class="bold" style="animation: aa 2s infinite;">RAM: </span>32GB DDR5 4800MHz</p>
+            <p><span class="bold" style="animation: aa 2s infinite;">SSD: </span>1tb SKHynix</p>
+            <p><a class="bold" onclick="hideshow('specs', 'main');">back</a></p>
+        </div>
+    </div>
+    <script src="./assets/jq.js"></script>
+    <script>
+        function hideshow(elementId, elementId2) {
+            var element = $("#" + elementId);
+            var element2 = $("#" + elementId2);
+            if (element.length && element2.length) {
+                element2.css("opacity", 0); // Set the second element's opacity to 0
+                element.fadeTo(100, 0, function () {
+                    element.hide();
+                    element2.fadeTo(120, 1); // Fade in the second element
+                });
+            } else {
+                console.error("One or both elements not found.");
+            }
+        }
+
+        function nogpu(value) {
+            if (value === true) {
+                // Set localStorage to store the option
+                localStorage.setItem("disableEffects", "true");
+                var scriptElement = document.getElementById("fxframe");
+                if (scriptElement) {
+                    scriptElement.src = "./evilf.html";
+                }
+                var linkElement = document.getElementById("gpu");
+                linkElement.innerHTML = "play effects";
+                linkElement.onclick = function () {
+                    nogpu(false);
+                };
+            } else if (value === false) {
+                // Remove the stored option from localStorage
+                localStorage.removeItem("disableEffects");
+                window.location.reload();
+            }
+        }
+
+        // Read the option from localStorage on page load
+        window.addEventListener("load", function () {
+            var disableEffects = localStorage.getItem("disableEffects");
+            if (disableEffects === "true") {
+                nogpu(true);
+            }
+            init();
+        });
+    </script>
+</body>
+
+</html>
