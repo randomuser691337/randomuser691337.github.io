@@ -190,17 +190,18 @@
             bangEmoji.style.left = `${event.pageX}px`;
             bangEmoji.style.top = `${event.pageY}px`;
             bangEmoji.style.zIndex = "3";
+            bangEmoji.style.fontSize = "25px";
             document.body.appendChild(bangEmoji);
             setTimeout(() => {
                 bangEmoji.remove();
-            }, 500);
+            }, 350);
 
             if (clickCount === 3) {
                 document.getElementById('lol').src = './assets/oops.jpg';
                 setTimeout(() => {
                     document.getElementById('lol').src = './assets/me.jpg';
                     clickCount = 0; // Reset click count
-                }, 1200);
+                }, 1000);
             }
         });
         function hideshow(elementId, elementId2) {
