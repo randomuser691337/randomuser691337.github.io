@@ -19,19 +19,40 @@
             background-size: 100% 100%;
             color: #fff;
             font-size: 16px;
+            animation: bb 2s infinite;
         }
 
-        canvas {
+        @keyframes bb {
+            0% {
+                background-color: #7777ff;
+            }
+
+            33% {
+               background-color: #ff7777;
+            }
+
+            66% {
+               background-color: #77ff77
+            }
+
+            100% {
+               background-color: #7777ff;
+            }
+        }
+
+        #canvas {
             width: 100%;
             height: 100%;
             z-index: 1;
             opacity: 75%;
             pointer-events: none;
+            background: rgb(0, 0, 0, 0.80)
         }
     </style>
 </head>
 
 <body>
+    <div id="canvas"></div>
     <!--<canvas></canvas>
     <script src="./assets/script.js"></script>
     <script>
