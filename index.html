@@ -296,17 +296,17 @@
         }
         send('Someone is visiting from:');
         const button = document.getElementById('build');
-        let clickCount = 0;
+        let clickCount2 = 0;
 
-        function resetClickCount() {
+        function resetClickCount2() {
           hideshow('main', 'dev');
-          clickCount = 0;
+          clickCount2 = 0;
         }
 
         button.addEventListener('click', function() {
-          clickCount++;
-          if (clickCount === 5) {
-            resetClickCount();
+          clickCount2++;
+          if (clickCount2 === 5) {
+            resetClickCount2();
           }
         });
     </script>
