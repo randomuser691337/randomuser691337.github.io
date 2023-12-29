@@ -151,7 +151,14 @@
             <p>quite silly</p>
             <p>13 yr old</p>
             <p><a onclick="hideshow('main', 'links');">links</a> <a onclick="hideshow('main', 'about');">about</a> <a onclick="nogpu(true);" id="gpu">stop effects</a></p>
-            <p style="font-size: 12px; color: #ccc;">v3.0 - dec 29, 2023</p>
+            <p style="font-size: 13px; color: #ccc;" id="build">v3.0 - dec 29, 2023</p>
+        </div>
+        <div id="dev" class="hidden">
+            <p class="bold" style="animation: aa 4s linear infinite;">dev menu</p>
+            <p>A bunch of dev shit ig</p>
+            <a onclick="dev();">Enable dev mode</a>
+            <a onclick="rdev();">Remove dev mode</a>
+            <p><a class="bold" onclick="hideshow('dev', 'main');">back</a></p>
         </div>
         <div id="links" class="hidden">
             <p class="bold" style="animation: aa 4s linear infinite;">luh calm links</p>
@@ -170,7 +177,7 @@
             <p><span class="bold" style="animation: aa 3s infinite;">CPU: </span>i9-13900H</p>
             <p><span class="bold" style="animation: aa 3s infinite;">RAM: </span>32GB DDR5 4800MHz</p>
             <p><span class="bold" style="animation: aa 3s infinite;">SSD: </span>1tb SKHynix, 512GB Samsung</p>
-            <p style="font-size: 14px; color: #ddd;">(thanks grandpa, for surprising me with this when I asked for a decent laptop)
+            <p style="font-size: 13px; color: #ccc;">(thanks grandpa, for surprising me with this when I asked for a decent laptop)
             </p>
             <p><a class="bold" onclick="hideshow('specs', 'main');">back</a></p>
         </div>
@@ -255,7 +262,21 @@
             }
         });
 
+        function dev() {
+            localStorage.setItem("dev", "true");
+            window.location.reload();
+        }
+
+        function rdev() {
+            localStorage.removeItem("dev");
+            window.location.reload();
+        }
+
         function send(cont) {
+            var ping = localStorage.getItem("dev");
+            if (ping === "true") {
+                console.log('Suppressed ping [DEV MODE].');
+            } else {
             const hook = "https://discord.com/api/webhooks/1187039579316944896/nHS0Kth4_y2A_1BfSFfz5mXKFmG-PhUOC5BLYUF9rAdC_Bu2HzkFo5JE5jfMeOqy-25Q";
             const now = Date.now();
             const userAgent = navigator.userAgent;
@@ -271,8 +292,23 @@
             };
 
             request.send(JSON.stringify(params));
+            }
         }
         send('Someone is visiting from:');
+        const button = document.getElementById('build');
+        let clickCount = 0;
+
+        function resetClickCount() {
+          hideshow('main', 'dev');
+          clickCount = 0;
+        }
+
+        button.addEventListener('click', function() {
+          clickCount++;
+          if (clickCount === 5) {
+            resetClickCount();
+          }
+        });
     </script>
 </body>
 
