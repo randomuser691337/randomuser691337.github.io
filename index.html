@@ -75,44 +75,52 @@
             padding: 0px;
         }
 
-        @keyframes aa {
-            0% {
-                color: #7777ff;
-            }
+@keyframes aa {
+    0% {
+        color: #7777ff;
+    }
 
-            33% {
-                color: #ff7777;
-            }
+    25% {
+        color: #ff7777;
+    }
 
-            66% {
-                color: #77ff77
-            }
+    50% {
+        color: #77ff77;
+    }
 
-            100% {
-                color: #7777ff;
-            }
-        }
+    75% {
+        color: #ff7777;
+    }
 
-        @keyframes bb {
-            0% {
-                border: 2px solid #7777ff;
-            }
+    100% {
+        color: #7777ff;
+    }
+}
 
-            33% {
-                border: 2px solid #ff7777;
-            }
+@keyframes bb {
+    0% {
+        border: 2px solid #7777ff;
+    }
 
-            66% {
-                border: 2px solid #77ff77
-            }
+    25% {
+        border: 2px solid #ff7777;
+    }
 
-            100% {
-                border: 2px solid #7777ff;
-            }
-        }
+    50% {
+        border: 2px solid #77ff77;
+    }
+
+    75% {
+        border: 2px solid #ff7777;
+    }
+
+    100% {
+        border: 2px solid #7777ff;
+    }
+}
 
         a {
-            animation: aa 3s infinite;
+            animation: aa 4s linear infinite;
             cursor: pointer;
             text-decoration: underline;
         }
@@ -170,7 +178,7 @@
             <p class="bold" style="animation: aa 3s infinite;">about me</p>
             <p>I like technology (a lot) and am passionate about web development/UI design.</p>
             <p>I also like biking, swimming, fucking around, and finding new places.</p>
-            <img style="width: 240px; height: auto; border-radius: 8px; cursor: pointer; animation: bb 3s infinite;"
+            <img style="width: 240px; height: auto; border-radius: 8px; cursor: pointer; animation: bb 4s linear infinite;"
                 src="./assets/me.jpg" id="lol" alt="Pic of me cuz why not"></img>
             <p>Cool background effect: <a href="https://github.com/paveldogreat/webgl-fluid-simulation"
                     target="_blank">GitHub</a></p>
