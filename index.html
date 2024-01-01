@@ -191,9 +191,32 @@
 
         #close {
             position: fixed;
-            left: 6px; bottom: 6px;
-            padding: 10px;
-            border-radius: 10px;
+            left: 8px; bottom: 8px;
+            padding: 12px;
+            border-radius: 14px; 
+            display: none;
+            background-color: #2a2a2a;
+            font-family: 'Poppins', Arial;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        #close:hover {
+            background-color: #3a3a3a;
+        }
+
+        #close:active {
+            background-color: #4a4a4a;
+        }
+
+        #view {
+            position: fixed;
+            left: 6px; right: 6px; top: 6px; bottom: 6px;
+            z-index: 3;
+            border-radius: 14px;
+            display: none;
+            background-color: #1a1a1a;
+        }
     </style>
 </head>
 
@@ -221,6 +244,7 @@
             <p><a href="https://randomuser691337blog.pages.dev">docs/blog</a></p>
             <p><a onclick="hideshow('links', 'specs');">pc specs</a></p>
             <p><a onclick="hideshow('links', 'webdesk');">webdesk</a></p>
+            <p><a onclick="hideshow('links', 'archive');">archive</a></p>
             <p><a href="https://discord.gg/NCpyYbrDNe" target="_blank">discord</a></p>
             <p><a href="https://github.com/randomuser691337" target="_blank">github</a></p>
             <p><a href="https://www.tiktok.com/@randomuser691337" target="_blank">tiktok</a></p>
@@ -235,6 +259,15 @@
             <p><a href="https://webdesknewagain.vercel.app" target="_blank">WebDesk Canary #1 (don't ask)</a></p>
             <p><a href="https://webdesk-canary.vercel.app" target="_blank">WebDesk Canary #2 (don't ask)</a></p>
             <p><a class="bold" onclick="hideshow('webdesk', 'links');">back</a></p>
+        </div>
+        <div style="display: none;" id="archive">
+            <p class="bold" style="animation: aa 4s linear infinite;">webdesk launcher</p>
+            <p>old projects and things that I made</p>
+            <p>deskutility = webdesk before it was called webdesk</p>
+            <p><a onclick="web('https://randomuser691337archive.vercel.app/DeskUtility.2.4.html');">DeskUtility 2.4 (last updated Dec 2021)</a></p>
+            <p><a onclick="web('https://randomuser691337archive.vercel.app/DeskUtility.3.0.html');">DeskUtility 3.0 (last updated Jan 2022)</a></p>
+            <p><a onclick="web('https://randomuser691337archive.vercel.app/deskutil6');">DeskUtility 6.8 (last updated Jun 2022)</a></p>
+            <p><a class="bold" onclick="hideshow('archive', 'links');">back</a></p>
         </div>
         <div id="specs" class="hidden">
             <p class="bold" style="animation: aa 4s linear infinite;">luh calm specs</p>
@@ -259,11 +292,17 @@
             <p>Contact: <a href="mailto:randomuser691337@gmail.com" target="_blank">email</a></p>
             <p><a class="bold" onclick="hideshow('about', 'links');">back</a></p>
         </div>
-        <frame id="view"></frame>
-        <button id="close"></button>
+        <frame id="view">Loading...</frame>
+        <button id="close" onclick="const f = document.getElementById('view'); f.style.display = 'none'; f.src = './evilf.html'; const b = document.getElementById('close'); b.style.display = 'none';">Close</button>
     </div>
     <script src="./assets/jq.js"></script>
     <script>
+        function web(src) {
+            const f = document.getElementById('view');
+            f.src = src;
+            f.style.display = 'block';
+            const b = document.getElementById('close'); b.style.display = 'block';
+        }
         // add a shock factor
         let clickCount = 0;
         document.getElementById('lol').addEventListener('click', function () {
