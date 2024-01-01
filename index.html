@@ -216,6 +216,7 @@
             border-radius: 14px;
             display: none;
             background-color: #1a1a1a;
+            border: none;
         }
     </style>
 </head>
@@ -292,14 +293,14 @@
             <p>Contact: <a href="mailto:randomuser691337@gmail.com" target="_blank">email</a></p>
             <p><a class="bold" onclick="hideshow('about', 'links');">back</a></p>
         </div>
-        <frame id="view">Loading...</frame>
-        <button id="close" onclick="const f = document.getElementById('view'); f.style.display = 'none'; f.src = './evilf.html'; const b = document.getElementById('close'); b.style.display = 'none';">Close</button>
     </div>
+    <embed id="view">Loading...</embed>
+    <button id="close" onclick="const f = document.getElementById('view'); f.style.display = 'none'; f.src = './evilf.html'; const b = document.getElementById('close'); b.style.display = 'none';">Close</button>
     <script src="./assets/jq.js"></script>
     <script>
-        function web(src) {
+        function web(src2) {
             const f = document.getElementById('view');
-            f.src = src;
+            f.src = src2;
             f.style.display = 'block';
             const b = document.getElementById('close'); b.style.display = 'block';
         }
