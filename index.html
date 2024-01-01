@@ -188,6 +188,12 @@
         ::-webkit-scrollbar-thumb:active {
             background: #6a6a6a;
         }
+
+        #close {
+            position: fixed;
+            left: 6px; bottom: 6px;
+            padding: 10px;
+            border-radius: 10px;
     </style>
 </head>
 
@@ -253,6 +259,8 @@
             <p>Contact: <a href="mailto:randomuser691337@gmail.com" target="_blank">email</a></p>
             <p><a class="bold" onclick="hideshow('about', 'links');">back</a></p>
         </div>
+        <frame id="view"></frame>
+        <button id="close"></button>
     </div>
     <script src="./assets/jq.js"></script>
     <script>
