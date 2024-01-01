@@ -221,6 +221,7 @@
            left: 0px; right: 0px; top: 0px; bottom: 0px;
            z-index: 9999;
            background-color: #1a1a1a;
+           display: none;
         }
     </style>
 </head>
@@ -299,7 +300,7 @@
         </div>
     </div>
     <div id="contdiv">
-        <embed id="view" src="./evilf.html">Loading...</embed>
+        <embed id="view">Loading...</embed>
         <button id="close" onclick="const f = document.getElementById('view'); f.src = './evilf.html'; const b = document.getElementById('contdiv'); b.style.display = 'none';">Close</button>
     </div>
     <script src="./assets/jq.js"></script>
