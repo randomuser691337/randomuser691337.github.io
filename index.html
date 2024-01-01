@@ -194,12 +194,11 @@
             left: 8px; bottom: 8px;
             padding: 12px;
             border-radius: 14px; 
-            display: none;
             background-color: #2a2a2a;
             font-family: 'Poppins', Arial;
             color: #fff;
             font-size: 16px;
-            z-index: 4;
+            z-index: 10000;
             border: none;
         }
 
@@ -214,8 +213,14 @@
         #view {
             position: absolute;
             z-index: 3 !important;
-            display: none;
             background-color: #1a1a1a;
+        }
+
+        #contdiv {
+           position: fixed;
+           left: 0px; right: 0px; top: 0px; bottom: 0px;
+           z-index: 9999;
+           background-color: #1a1a1a;
         }
     </style>
 </head>
@@ -293,15 +298,16 @@
             <p><a class="bold" onclick="hideshow('about', 'links');">back</a></p>
         </div>
     </div>
-    <embed id="view" src="./evilf.html">Loading...</embed>
-    <button id="close" onclick="const f = document.getElementById('view'); f.style.display = 'none'; f.src = './evilf.html'; const b = document.getElementById('close'); b.style.display = 'none';">Close</button>
+    <div id="contdiv">
+        <embed id="view" src="./evilf.html">Loading...</embed>
+        <button id="close" onclick="const f = document.getElementById('view'); f.src = './evilf.html'; const b = document.getElementById('contdiv'); b.style.display = 'none';">Close</button>
+    </div>
     <script src="./assets/jq.js"></script>
     <script>
         function web(src2) {
             const f = document.getElementById('view');
             f.src = src2;
-            f.style.display = 'block';
-            const b = document.getElementById('close'); b.style.display = 'block';
+            const b = document.getElementById('contdiv'); b.style.display = 'block';
         }
         // add a shock factor
         let clickCount = 0;
